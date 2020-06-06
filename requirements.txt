@@ -15,4 +15,6 @@ soupsieve==2.0
 urllib3==1.25.9
 webencodings==0.5.1
 xlrd==1.2.0
-styleframe==2.0.5
+styleframe==2.0.
+textdistance==4.2.0
+scipy==1.4.1

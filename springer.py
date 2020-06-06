@@ -1,26 +1,14 @@
 import pandas as pd
 import requests
 from bs4 import BeautifulSoup, NavigableString, Tag
-import string
+import utils
 
 
 df = pd.read_excel('FreeEnglishTextbooks.xlsx')
 
 for i, row in df.iterrows():
 
-	authors = row['Author'].split(', ')
-	surnames = []
-	for author in authors:
-		names = author.split()
-		surnames.append(names[-1])
-
-	title = row['Book Title']
-	title += ' ' + str(row['Copyright Year']) + ' '
-	title += ' '.join(surnames)
-
-	whitelist = string.ascii_letters + string.digits + ' '
-	title = ''.join([c for c in title if c in whitelist]).lower().replace(' ', '-')
-	title += '.pdf'
+	title = create_file_name(row)
 
 	print('downloading ' + title + '...', end=' ')
 
